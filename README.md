@@ -9,9 +9,32 @@ Requirements:
 - List all comments (belong to a post)
 
 Posts Service:
-- POST /posts {title: string}
-- GET  /posts
+(1) POST /posts {title: string}
+(2) GET  /posts
 
 Comments Service
-- POST /posts/:id/comments { content: string }
-- GET  /posts/:id/comments
+(3) POST /posts/:id/comments { content: string }
+(4) GET  /posts/:id/comments
+
+Problem: When we reload the page and get the list of posts, for every post we call API get list of comment belong to each post.
+It turns out we need to call API (4) multiple times. If we have 3 posts we call API (4) 3 times. Is there any other way to optimize the number of call to Comments Service?
+
+Answer: Using Async Communication in microservices - Event Bus
+- Whenever user create post or comment, post service and comment service will emit an event to any services register to listen to this even.
+- Create a Query Service which is listening to Create Post and Create Commment action then update its database
+    <table>
+        <thead>
+            <tr>
+                <th>id</th>
+                <th>title</th>
+                <th>comments</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <td>post id</td>
+                <td>post title</td>
+                <td>list of comment {id, content}</td>
+            </tr>
+        </tbody>
+    </table>
