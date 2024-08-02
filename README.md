@@ -38,3 +38,5 @@ Answer: Using Async Communication in microservices - Event Bus
             </tr>
         </tbody>
     </table>
+
+  <img width="789" alt="image" src="https://github.com/user-attachments/assets/17209670-5d02-41d4-b455-924d9536883d">
