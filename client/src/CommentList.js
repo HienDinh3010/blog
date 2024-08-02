@@ -1,18 +1,11 @@
-import React, { useState, useEffect } from 'react';
+import React from "react";
 
-export default ({ comments }) => {
+const CommentList = ({ comments }) => {
+  const renderedComments = comments.map((comment) => {
+    return <li key={comment.id}>{comment.content}</li>;
+  });
 
-    const renderedComments = comments.map(comment => {
-        return (
-            <li key={comment.id}>
-                {comment.content}
-            </li>
-        );
-    });
-
-    return (
-        <ul>
-            {renderedComments}
-        </ul>
-    );
+  return <ul>{renderedComments}</ul>;
 };
+
+export default CommentList;
