@@ -39,5 +39,8 @@ Answer: Using Async Communication in microservices - Event Bus
         </tbody>
     </table>
   <img width="789" alt="image" src="https://github.com/user-attachments/assets/17209670-5d02-41d4-b455-924d9536883d">
-  
-Adding new feature: Add in comment moderation. Flag comments that contain the word 'orange'
+
+Adding new feature: Add in comment moderation. Flag comments that contain the word 'orange'.
+Solve by: create moderation service to listen to CommentCreated event, this moderation service will update status of comment (rejected/approved) then emitting the CommentModerated event back to comment service. 
+Comment service will listent to CommentModerated event then emiting the CommentUpdated event.
+Finally, Query service will listen to CommentUpdated event
