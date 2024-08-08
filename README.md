@@ -141,3 +141,14 @@ Virtual machine + Second Virtual machine:
 </table>
 
 - Consider a scenario where the number of requests to our application varies throughout the day. For example, at 10 AM, there is a high volume of requests, but by 10 PM, the workload decreases significantly. In such cases, we can optimize resource usage by turning off the second virtual machine at 10 PM.
+
+Docker
+- Docker creates and manages containers. A container is an isolated computing environment including everything we need to run an application.
+- In our blog application, each service runs within its own container. We can also duplicate the container for a service to scale application.
+- Why we need to use docker?
+Because (1) Running our app right now makes big assumptions about our environment. (2) Running our app requires precise knowledge of how to start it (npm start) => Docker solves both issues. Containers wrap up everything we need for an application, how to start and run it.
+
+Kubernetes Cluster
+- K8s includes list of nodes
+- Based on config file, K8s will create containers.
+- k8s makes sure the communication between containers is smooth. We don't care how many duplicated containers of a post service, we only need to tell k8s "Hi, from event bus, I want to call post service". k8s will take care of the rest.
