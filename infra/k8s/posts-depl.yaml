@@ -14,5 +14,4 @@ spec:
     spec:
       containers:
         - name: posts
-          image: hien/posts:0.0.1
-          
+          image: hien/posts:0.0.2
