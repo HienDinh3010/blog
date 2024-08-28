@@ -148,7 +148,26 @@ Docker
 - Why we need to use docker?
 Because (1) Running our app right now makes big assumptions about our environment. (2) Running our app requires precise knowledge of how to start it (npm start) => Docker solves both issues. Containers wrap up everything we need for an application, how to start and run it.
 
-Kubernetes Cluster
-- K8s includes list of nodes
+Kubernetes 
+- K8s cluster includes list of nodes and a MASTER to manage all these nodes.
+- Node a virtual machine that will run our containers.
+- Pod is a running container, a pod can run multiple containers.
 - Based on config file, K8s will create containers.
-- k8s makes sure the communication between containers is smooth. We don't care how many duplicated containers of a post service, we only need to tell k8s "Hi, from event bus, I want to call post service". k8s will take care of the rest.
+- Service provides an URL to access a running container.
+Service in K8s is not service in Microservice :)
+- Deployment: Monitor a set of pods, make sure they are running and restarts them if they crash.
+- K8s makes sure the communication between containers is smooth. We don't care how many duplicated containers of a post service, we only need to tell k8s "Hi, from event bus, I want to call post service". k8s will take care of the rest.
+- K8s config files
+    + Define the deployments, pods and services (referred to as 'Objects') that we want to create in yaml syntax.
+    + We can create Objects without config files (do not do this). We only create objects by running direct commands for testing purpose.
+
+How to updating the image used by a deployment?
+- Method 1: Make a change to the code -> Rebuild the image, specify a image version -> In the deployment config file, update the version of image -> Run the command: "kubectl apply -f [depl file name]"
+- Method 2: The deployment must be using the 'latest' tag in the pod spec section -> Make an update to your code -> Build the image -> Push the image to docker hub -> Run the command "kubectl rollout restart deployment [dept_name]"
+
+Networking With Services: 
+4 types of services:
+- Cluster IP: Sets up an URL to access a pod. Only exposes pods in the cluster.
+- Node Port: Makes a pod accessible from outside the cluster. (Usually only used for dev purposes)
+- Load Balancer: Makes a pod accessible from outside the cluster. This is the right way to expose a pod to the outside world.
+- External Name: Redirects an in-cluster request to a CNAME url (Only used in rare case - so don't worry)
