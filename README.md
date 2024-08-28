@@ -171,3 +171,7 @@ Networking With Services:
 - Node Port: Makes a pod accessible from outside the cluster. (Usually only used for dev purposes)
 - Load Balancer: Makes a pod accessible from outside the cluster. This is the right way to expose a pod to the outside world.
 - External Name: Redirects an in-cluster request to a CNAME url (Only used in rare case - so don't worry)
+
+Error when access http://localhost:30359/posts
+If you're using a local Kubernetes cluster (like Minikube or Docker Desktop), you can try using port forwarding to expose the service on your localhost directly: kubectl port-forward svc/posts-srv 30359:4000
+Then try accessing http://localhost:30359/posts.

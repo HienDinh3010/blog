@@ -8,6 +8,6 @@ spec:
     app: posts
   ports:
     - name: posts
-      protocal: TCP
+      protocol: TCP
       port: 4000
       targetPort: 4000
