@@ -175,3 +175,6 @@ Networking With Services:
 Error when access http://localhost:30359/posts
 If you're using a local Kubernetes cluster (like Minikube or Docker Desktop), you can try using port forwarding to expose the service on your localhost directly: kubectl port-forward svc/posts-srv 30359:4000
 Then try accessing http://localhost:30359/posts.
+
+
+Install Ingress Controller: https://kubernetes.github.io/ingress-nginx/deploy/#quick-start
