@@ -178,3 +178,6 @@ Then try accessing http://localhost:30359/posts.
 
 
 Install Ingress Controller: https://kubernetes.github.io/ingress-nginx/deploy/#quick-start
+
+Install and config skaffold:
+    - Run "skaffold dev"
