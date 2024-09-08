@@ -3,10 +3,9 @@ kind: Ingress
 metadata:
   name: ingress-srv
   annotations:
-    kubernetes.io/ingress.class: nginx
     nginx.ingress.kubernetes.io/use-regex: 'true'
 spec:
-  ingressClassName: nginx
+  ingressClassName: nginx  # Keep this field
   rules:
     - host: posts.com
       http:
@@ -23,19 +22,19 @@ spec:
             backend:
               service:
                 name: query-srv
-                port: 
+                port:
                   number: 4002
           - path: /posts/?(.*)/comments
             pathType: ImplementationSpecific
             backend:
               service:
                 name: comments-srv
-                port: 
+                port:
                   number: 4001
           - path: /?(.*)
             pathType: ImplementationSpecific
             backend:
               service:
                 name: client-srv
-                port: 
+                port:
                   number: 3000
